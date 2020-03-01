@@ -1,4 +1,5 @@
 #!/usr/bin/env node
-// #!d:\Users\admin\AppData\Roaming\npm
+import {acquaint} from '../src/index.js';
 
-console.log("Welcome to the Brain Games!");
+
+acquaint();
