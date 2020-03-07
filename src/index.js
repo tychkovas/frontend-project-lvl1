@@ -1,7 +1,7 @@
 import readlineSync from 'readline-sync';
 
 // gets acquainted with the player
-const acquaint = () => {  
+const acquaint = () => {
   console.log('Welcome to the Brain Games!');
 
   const name = readlineSync.question('May I have your name? ');
