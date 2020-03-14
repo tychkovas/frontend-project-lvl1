@@ -4,8 +4,8 @@ const gameTask = 'What is the result of the expression?';
 
 const rnum = (r) => Math.trunc(Math.random() * r + 1);
 
-// function calc return ['Question' string, answer string or number]
-const roundLogic = () => {
+// function roundLogicCalc return ['Question' string, answer string or number]
+const roundLogicCalc = () => {
   let numA = rnum(100);
   let numB = rnum(100);
   let result = ['Init question', 'Init answer'];
@@ -29,6 +29,6 @@ const roundLogic = () => {
   return result;
 };
 
-const startGame = () => game(gameTask, roundLogic);
+const startGame = () => game(gameTask, roundLogicCalc);
 
 export default startGame;
