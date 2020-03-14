@@ -9,12 +9,18 @@ const acquaint = () => {
   return name;
 };
 
-const task = (num, answerTrue = 'yes') => {
-  console.log(`Question: ${num}`);
+const task = (text, answerTrue) => {
+  console.log(`Question: ${text}`);
   const answer = readlineSync.question('Your answer:');
-  const result = answer === answerTrue;
+  let result = false;
+  if (typeof answerTrue === 'number') {
+    result = Number(answer) === answerTrue;
+  } else {
+    result = answer === answerTrue;
+  }
+
   if (result) console.log('Correct!');
-  else console.log(`"${answer} is wrogn answer ;(. Correct answer was "${answerTrue}"`);
+  else console.log(`"${answer}" is wrogn answer ;(. Correct answer was "${answerTrue}"`);
   return result;
 };
 
