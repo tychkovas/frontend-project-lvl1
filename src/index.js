@@ -24,9 +24,33 @@ const task = (text, answerTrue) => {
   return result;
 };
 
-const gameOver = (name) => console.log(`Let's try again, ${name}!`);
+const losing = (name) => console.log(`Let's try again, ${name}!`);
 
 const congratulations = (name) => console.log(`Congratulations, ${name}!`);
 
+const gameOver = (name, isWin) => (isWin ? congratulations(name) : losing(name));
+
+const game = (funk) => {
+  // getting to know the player
+  const name = acquaint();
+  // start game
+  console.log('What is the result of the expression?');
+  // Questions to the player
+  let trueAnswer = 0;
+  while (trueAnswer < 3) {
+    if (task(...funk())) {
+      // win check, congratulations
+      trueAnswer += 1;
+    } else {
+      // wrong answer, losing
+      break;
+    }
+  }
+  return gameOver(name, (trueAnswer === 3));
+};
+
+
 export default acquaint;
-export { task, gameOver, congratulations };
+export {
+  task, gameOver, congratulations, game,
+};
