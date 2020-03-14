@@ -1,9 +1,11 @@
 import { game } from '../index.js';
 
+const gameTask = 'What is the result of the expression?';
+
 const rnum = (r) => Math.trunc(Math.random() * r + 1);
 
 // function calc return ['Question' string, answer string or number]
-const calc = () => {
+const roundLogic = () => {
   let numA = rnum(100);
   let numB = rnum(100);
   let result = ['Init question', 'Init answer'];
@@ -16,8 +18,8 @@ const calc = () => {
       result = [`${numA} - ${numB}`, numA - numB];
       break;
     case 3:
-      numA = rnum(10);
-      numB = rnum(10);
+      numA = rnum(9);
+      numB = rnum(9);
       result = [`${numA} * ${numB}`, numA * numB];
       break;
     default: console.log('Error operation');
@@ -27,6 +29,6 @@ const calc = () => {
   return result;
 };
 
-const startGame = () => game(calc);
+const startGame = () => game(gameTask, roundLogic);
 
 export default startGame;

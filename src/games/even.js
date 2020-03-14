@@ -1,7 +1,9 @@
 import { game } from '../index.js';
 
-// function even return ['Question' string, answer string or number]
-const even = () => {
+const gameTask = 'Answer "yes" if the number is even, otherwise answer "no".';
+
+// function roundLogic return ['Question' string, answer string or number]
+const roundLogic = () => {
   const number = Math.trunc(Math.random() * 100 + 1);
 
   const result = [number, (number % 2 === 0) ? 'yes' : 'no'];
@@ -10,6 +12,6 @@ const even = () => {
   return result;
 };
 
-const startGame = () => game(even);
+const startGame = () => game(gameTask, roundLogic);
 
 export default startGame;

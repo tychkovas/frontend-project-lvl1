@@ -1,6 +1,6 @@
 import readlineSync from 'readline-sync';
 
-// gets acquainted with the player
+// Getting to know the player
 const acquaint = () => {
   console.log('Welcome to the Brain Games!');
 
@@ -9,7 +9,9 @@ const acquaint = () => {
   return name;
 };
 
-const task = (text, answerTrue) => {
+// Run a round of the game
+// Return true - win or false - loss
+const runRound = (text, answerTrue) => {
   console.log(`Question: ${text}`);
   const answer = readlineSync.question('Your answer:');
   let result = false;
@@ -24,21 +26,22 @@ const task = (text, answerTrue) => {
   return result;
 };
 
-const losing = (name) => console.log(`Let's try again, ${name}!`);
+const losing = (name) => `Let's try again, ${name}!`;
 
-const congratulations = (name) => console.log(`Congratulations, ${name}!`);
+const congratulations = (name) => `Congratulations, ${name}!`;
 
 const gameOver = (name, isWin) => (isWin ? congratulations(name) : losing(name));
 
-const game = (func) => {
+// General logic of brain games
+const game = (gameTask, funcRoundLogic) => {
   // getting to know the player
   const name = acquaint();
   // start game
-  console.log('What is the result of the expression?');
+  console.log(gameTask);
   // Questions to the player
   let trueAnswer = 0;
   while (trueAnswer < 3) {
-    if (task(...func())) {
+    if (runRound(...funcRoundLogic())) {
       // win check, congratulations
       trueAnswer += 1;
     } else {
@@ -46,7 +49,9 @@ const game = (func) => {
       break;
     }
   }
-  return gameOver(name, (trueAnswer === 3));
+
+  console.log(gameOver(name, (trueAnswer === 3)));
+  return (trueAnswer === 3);
 };
 
 
