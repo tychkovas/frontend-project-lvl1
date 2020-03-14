@@ -1,23 +1,15 @@
-import acquaint, { task, gameOver, congratulations } from '../index.js';
+import { game } from '../index.js';
 
-const startGame = () => {
-  // getting to know the player
-  const name = acquaint();
-  // start game
-  console.log('Answer "yes" if the number is even, otherwise answer "no".');
-  // Questions to the player
-  let trueAnswer = 0;
-  let number = -1;
-  while (trueAnswer < 3) {
-    number = (Math.random() * 100 + 1).toFixed();
-    if (task(number, (number % 2 === 0) ? 'yes' : 'no')) {
-      trueAnswer += 1;
-    } else {
-      gameOver(name);
-      break;
-    }
-  }
-  if (trueAnswer === 3) congratulations(name);
+// function even return ['Question' string, answer string or number]
+const even = () => {
+  const number = Math.trunc(Math.random() * 100 + 1);
+
+  const result = [number, (number % 2 === 0) ? 'yes' : 'no'];
+
+  // console.log(result);
+  return result;
 };
+
+const startGame = () => game(even);
 
 export default startGame;

@@ -30,7 +30,7 @@ const congratulations = (name) => console.log(`Congratulations, ${name}!`);
 
 const gameOver = (name, isWin) => (isWin ? congratulations(name) : losing(name));
 
-const game = (funk) => {
+const game = (func) => {
   // getting to know the player
   const name = acquaint();
   // start game
@@ -38,7 +38,7 @@ const game = (funk) => {
   // Questions to the player
   let trueAnswer = 0;
   while (trueAnswer < 3) {
-    if (task(...funk())) {
+    if (task(...func())) {
       // win check, congratulations
       trueAnswer += 1;
     } else {
@@ -52,5 +52,5 @@ const game = (funk) => {
 
 export default acquaint;
 export {
-  task, gameOver, congratulations, game,
+  game,
 };

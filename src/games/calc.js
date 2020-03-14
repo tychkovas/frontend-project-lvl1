@@ -23,7 +23,7 @@ const calc = () => {
     default: console.log('Error operation');
   }
 
-  console.log(result);
+  // console.log(result);
   return result;
 };
 
