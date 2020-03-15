@@ -1,8 +1,6 @@
-import { game } from '../index.js';
+import { game, rnum } from '../index.js';
 
 const gameTask = 'What is the result of the expression?';
-
-const rnum = (r) => Math.trunc(Math.random() * r + 1);
 
 // function roundLogicCalc return ['Question' string, answer string or number]
 const roundLogicCalc = () => {

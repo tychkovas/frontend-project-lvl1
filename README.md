@@ -13,3 +13,5 @@
 
 Пример запуска игры "Калькулятор".
 [![asciicast](https://asciinema.org/a/waJi6wl8uoHZdSvc09FqqA17G.svg)](https://asciinema.org/a/waJi6wl8uoHZdSvc09FqqA17G)
+
+Пример запуска игры "наибольший общий делитель (НОД)"
