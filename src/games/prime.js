@@ -18,7 +18,7 @@ const roundLogic = () => {
   const answer = isPrime(number);
   const result = [number, (answer) ? 'yes' : 'no'];
 
-  console.log(result);
+  // console.log(result);
   return result;
 };
 
