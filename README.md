@@ -14,5 +14,7 @@
 Пример запуска игры "Калькулятор".
 [![asciicast](https://asciinema.org/a/waJi6wl8uoHZdSvc09FqqA17G.svg)](https://asciinema.org/a/waJi6wl8uoHZdSvc09FqqA17G)
 
-Пример запуска игры "наибольший общий делитель (НОД)"
+Пример запуска игры "наибольший общий делитель (НОД)".
 [![asciicast](https://asciinema.org/a/310490.svg)](https://asciinema.org/a/310490)
+
+Пример запуска игры "Простое ли число?".
