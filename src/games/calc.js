@@ -1,14 +1,14 @@
-import { game, rnum } from '../index.js';
+import { game, getRandomNumber } from '../index.js';
 
 const gameTask = 'What is the result of the expression?';
 
 // function roundLogicCalc return ['Question' string, answer string or number]
 const roundLogicCalc = () => {
-  let numA = rnum(100);
-  let numB = rnum(100);
+  let numA = getRandomNumber(100);
+  let numB = getRandomNumber(100);
   let result = ['Init question', 'Init answer'];
 
-  switch (rnum(3)) {
+  switch (getRandomNumber(3)) {
     case 1:
       result = [`${numA} + ${numB}`, numA + numB];
       break;
@@ -16,8 +16,8 @@ const roundLogicCalc = () => {
       result = [`${numA} - ${numB}`, numA - numB];
       break;
     case 3:
-      numA = rnum(9);
-      numB = rnum(9);
+      numA = getRandomNumber(9);
+      numB = getRandomNumber(9);
       result = [`${numA} * ${numB}`, numA * numB];
       break;
     default: console.log('Error operation');

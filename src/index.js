@@ -54,10 +54,10 @@ const game = (gameTask, funcRoundLogic) => {
   return (trueAnswer === 3);
 };
 
-const rnum = (r) => Math.trunc(Math.random() * r + 1);
+const getRandomNumber = (r = 100) => Math.trunc(Math.random() * r + 1);
 
 export default acquaint;
 export {
   game,
-  rnum,
+  getRandomNumber,
 };

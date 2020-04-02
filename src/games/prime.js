@@ -1,4 +1,4 @@
-import { game, rnum } from '../index.js';
+import { game, getRandomNumber } from '../index.js';
 
 const gameTask = 'Answer "yes" if given number is prime, otherwise answer "no".';
 
@@ -13,7 +13,7 @@ const isPrime = (x) => {
 
 // function roundLogic return ['Question' string, answer string or number]
 const roundLogic = () => {
-  const number = rnum(100);
+  const number = getRandomNumber(100);
 
   const answer = isPrime(number);
   const result = [number, (answer) ? 'yes' : 'no'];

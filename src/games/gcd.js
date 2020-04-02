@@ -1,4 +1,4 @@
-import { game, rnum } from '../index.js';
+import { game, getRandomNumber } from '../index.js';
 
 const gameTask = 'Find the greatest common divisor of given numbers.';
 
@@ -7,8 +7,8 @@ const gcd = (a, b) => ((b === 0) ? a : gcd(b, a % b));
 
 // function roundLogicGCD return ['Question' string, answer string or number]
 const roundLogicForNumber = () => {
-  const numA = rnum(100);
-  const numB = rnum(100);
+  const numA = getRandomNumber(100);
+  const numB = getRandomNumber(100);
   const decision = gcd(numA, numB);
 
   const result = [`${numA} ${numB}`, decision];

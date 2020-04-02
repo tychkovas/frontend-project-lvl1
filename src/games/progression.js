@@ -1,14 +1,14 @@
-import { game, rnum } from '../index.js';
+import { game, getRandomNumber } from '../index.js';
 
 const gameTask = 'What number is missing in the progression?';
 
 // Arithmetic progression
 // function roundLogic return ['Question' string, answer string or number]
 const roundLogic = () => {
-  const num1 = rnum(20);
-  const d = rnum(10);
-  const n = 6 + rnum(8);
-  const findInd = rnum(n) - 1;
+  const num1 = getRandomNumber(20);
+  const d = getRandomNumber(10);
+  const n = 6 + getRandomNumber(8);
+  const findInd = getRandomNumber(n) - 1;
   // console.log('d='+ d + ' n='+ n +' findInd='+ findInd );
   const decision = num1 + d * findInd;
   const aprogression = [];
