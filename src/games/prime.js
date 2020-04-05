@@ -1,4 +1,5 @@
-import { game, getRandomNumber } from '../index.js';
+import runGame from '../game-engine.js';
+import { getRandomNumber } from '../utils.js';
 
 const gameTask = 'Answer "yes" if given number is prime, otherwise answer "no".';
 
@@ -27,6 +28,6 @@ const getGamePrimeRoundData = () => {
   return dataSetRoundGame;
 };
 
-const startGame = () => game(gameTask, getGamePrimeRoundData);
+const startGame = () => runGame(gameTask, getGamePrimeRoundData);
 
 export default startGame;

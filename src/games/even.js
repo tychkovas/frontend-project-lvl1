@@ -1,4 +1,5 @@
-import { game, getRandomNumber } from '../index.js';
+import runGame from '../game-engine.js';
+import { getRandomNumber } from '../utils.js';
 
 const gameTask = 'Answer "yes" if the number is even, otherwise answer "no".';
 
@@ -16,6 +17,6 @@ const getGameEvenRoundData = () => {
   return dataSetRoundGame;
 };
 
-const startGame = () => game(gameTask, getGameEvenRoundData);
+const startGame = () => runGame(gameTask, getGameEvenRoundData);
 
 export default startGame;

@@ -1,4 +1,6 @@
-import { game, getRandomNumber } from '../index.js';
+import runGame from '../game-engine.js';
+import { getRandomNumber } from '../utils.js';
+
 
 const gameTask = 'What number is missing in the progression?';
 
@@ -32,6 +34,6 @@ const getGameProgressionRoundData = () => {
   return dataSetRoundGame;
 };
 
-const startGame = () => game(gameTask, getGameProgressionRoundData);
+const startGame = () => runGame(gameTask, getGameProgressionRoundData);
 
 export default startGame;

@@ -1,4 +1,5 @@
-import { game, getRandomNumber } from '../index.js';
+import runGame from '../game-engine.js';
+import { getRandomNumber } from '../utils.js';
 
 const gameTask = 'What is the dataSet of the expression?';
 
@@ -37,6 +38,6 @@ const getGameCalcRoundData = () => {
   return dataSetRoundGame;
 };
 
-const startGame = () => game(gameTask, getGameCalcRoundData);
+const startGame = () => runGame(gameTask, getGameCalcRoundData);
 
 export default startGame;
