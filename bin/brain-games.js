@@ -1,5 +1,4 @@
 #!/usr/bin/env node
-import acquaint from '../src/index.js';
+import printGreeting from '../src/index.js';
 
-
-acquaint();
+printGreeting();

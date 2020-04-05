@@ -1,5 +1,4 @@
 import readlineSync from 'readline-sync';
-import acquaint from './index.js';
 
 // Run a round of the game
 // Return true - win or false - loss
@@ -29,7 +28,10 @@ const numberOfRoundsOfGame = 3;
 // General logic of brain games
 const runGame = (gameTask, funcGetDataRound) => {
   // getting to know the player
-  const name = acquaint();
+  console.log('Welcome to the Brain Games!');
+  const nameUser = readlineSync.question('May I have your name? ');
+  console.log(`Hello, ${nameUser}!`);
+
   // start game
   console.log(gameTask);
   // Questions to the player
@@ -44,7 +46,7 @@ const runGame = (gameTask, funcGetDataRound) => {
     }
   }
 
-  console.log(gameOver(name, (trueAnswer === numberOfRoundsOfGame)));
+  console.log(gameOver(nameUser, (trueAnswer === numberOfRoundsOfGame)));
   return (trueAnswer === numberOfRoundsOfGame);
 };
 
