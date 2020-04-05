@@ -10,18 +10,23 @@ const isPrime = (x) => {
   return true;
 };
 
+const maxValueNumberDefault = 100;
 
-// function roundLogic return ['Question' string, answer string or number]
-const roundLogic = () => {
-  const number = getRandomNumber(100);
+// function getGamePrimeRoundData
+// return ['game round task' string or number, 'answer' string or number]
+const getGamePrimeRoundData = () => {
+  const number = getRandomNumber(maxValueNumberDefault);
 
   const answer = isPrime(number);
-  const result = [number, (answer) ? 'yes' : 'no'];
 
-  // console.log(result);
-  return result;
+  const roundTask = number;
+  const correctRoundAnswer = (answer) ? 'yes' : 'no';
+
+  const dataSetRoundGame = [roundTask, correctRoundAnswer];
+  // console.log(dataSetRoundGame);
+  return dataSetRoundGame;
 };
 
-const startGame = () => game(gameTask, roundLogic);
+const startGame = () => game(gameTask, getGamePrimeRoundData);
 
 export default startGame;

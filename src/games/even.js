@@ -2,16 +2,20 @@ import { game, getRandomNumber } from '../index.js';
 
 const gameTask = 'Answer "yes" if the number is even, otherwise answer "no".';
 
-// function roundLogicEven return ['Question' string, answer string or number]
-const roundLogicEven = () => {
-  const number = getRandomNumber(100);
+const isEven = (number) => (number % 2 === 0);
 
-  const result = [number, (number % 2 === 0) ? 'yes' : 'no'];
+// function getGameEvenRoundData
+// return ['game round task' string or number, 'answer' string or number]
+const getGameEvenRoundData = () => {
+  const roundNumber = getRandomNumber(100);
+  const correctRoundAnswer = isEven(roundNumber) ? 'yes' : 'no';
 
-  // console.log(result);
-  return result;
+  const dataSetRoundGame = [roundNumber, correctRoundAnswer];
+
+  // console.log(dataSetRoundGame);
+  return dataSetRoundGame;
 };
 
-const startGame = () => game(gameTask, roundLogicEven);
+const startGame = () => game(gameTask, getGameEvenRoundData);
 
 export default startGame;

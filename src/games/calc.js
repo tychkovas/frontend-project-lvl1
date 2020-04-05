@@ -1,32 +1,42 @@
 import { game, getRandomNumber } from '../index.js';
 
-const gameTask = 'What is the result of the expression?';
+const gameTask = 'What is the dataSet of the expression?';
 
-// function roundLogicCalc return ['Question' string, answer string or number]
-const roundLogicCalc = () => {
-  let numA = getRandomNumber(100);
-  let numB = getRandomNumber(100);
-  let result = ['Init question', 'Init answer'];
+const getSumm = (a, b) => a + b;
+const getSub = (a, b) => a - b;
+const getMulti = (a, b) => a * b;
 
-  switch (getRandomNumber(3)) {
-    case 1:
-      result = [`${numA} + ${numB}`, numA + numB];
-      break;
-    case 2:
-      result = [`${numA} - ${numB}`, numA - numB];
-      break;
-    case 3:
-      numA = getRandomNumber(9);
-      numB = getRandomNumber(9);
-      result = [`${numA} * ${numB}`, numA * numB];
-      break;
-    default: console.log('Error operation');
+const calcOperations = [
+  { name: 'summ', display: '+', func: getSumm },
+  { name: 'sub', display: '-', func: getSub },
+  { name: 'multi', display: '*', func: getMulti },
+];
+
+const maxValueNumberDefault = 100;
+const maxValueNumberForMultiOper = 9;
+
+// function getGameCalcRoundData
+// return ['game round task' string or number, 'answer' string or number]
+const getGameCalcRoundData = () => {
+  let numA = getRandomNumber(maxValueNumberDefault);
+  let numB = getRandomNumber(maxValueNumberDefault);
+
+  const curOperIndex = getRandomNumber(calcOperations.length) - 1;
+  const сurOper = calcOperations[curOperIndex];
+  if (сurOper.name === 'multi') {
+    numA = getRandomNumber(maxValueNumberForMultiOper);
+    numB = getRandomNumber(maxValueNumberForMultiOper);
   }
 
-  // console.log(result);
-  return result;
+  const roundTask = `${numA} ${сurOper.display} ${numB}`;
+  const correctRoundAnswer = сurOper.func(numA, numB);
+
+  const dataSetRoundGame = [roundTask, correctRoundAnswer];
+
+  // console.log(dataSetRoundGame);
+  return dataSetRoundGame;
 };
 
-const startGame = () => game(gameTask, roundLogicCalc);
+const startGame = () => game(gameTask, getGameCalcRoundData);
 
 export default startGame;

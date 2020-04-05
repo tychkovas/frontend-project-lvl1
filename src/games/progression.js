@@ -3,24 +3,35 @@ import { game, getRandomNumber } from '../index.js';
 const gameTask = 'What number is missing in the progression?';
 
 // Arithmetic progression
-// function roundLogic return ['Question' string, answer string or number]
-const roundLogic = () => {
-  const num1 = getRandomNumber(20);
-  const d = getRandomNumber(10);
-  const n = 6 + getRandomNumber(8);
+// function getGameProgressionRoundData
+// return ['game round task' string or number, 'answer' string or number]
+const getGameProgressionRoundData = () => {
+  const maxValueFirstNum = 20;
+  const firstNum = getRandomNumber(maxValueFirstNum);
+  const maxValueDifference = 10;
+  const difference = getRandomNumber(maxValueDifference);
+  const baseCntNumbersProgression = 6;
+  const maxCntAddNumbersProgression = 8;
+  const n = baseCntNumbersProgression + getRandomNumber(maxCntAddNumbersProgression); // ~ [7..14]
+
   const findInd = getRandomNumber(n) - 1;
-  // console.log('d='+ d + ' n='+ n +' findInd='+ findInd );
-  const decision = num1 + d * findInd;
-  const aprogression = [];
+  // console.log('d='+ difference + ' n='+ n +' findInd='+ findInd );
+  const decision = firstNum + difference * findInd;
+
+  const progressionTask = [];
   for (let i = 0; i < n; i += 1) {
-    aprogression.push((i === findInd) ? '..' : num1 + (d * i));
-    // console.log(i + ' : ' + ' ^ ' + aprogression);
+    progressionTask.push((i === findInd) ? '..' : firstNum + (difference * i));
+    // console.log(i + ' : ' + ' ^ ' + progressionTask);
   }
-  const result = [aprogression.join(' '), decision];
-  // console.log(result);
-  return result;
+
+  const roundTask = progressionTask.join(' ');
+  const correctRoundAnswer = decision;
+
+  const dataSetRoundGame = [roundTask, correctRoundAnswer];
+  // console.log(dataSetRoundGame);
+  return dataSetRoundGame;
 };
 
-const startGame = () => game(gameTask, roundLogic);
+const startGame = () => game(gameTask, getGameProgressionRoundData);
 
 export default startGame;
