@@ -8,13 +8,13 @@ const isEven = (number) => (number % 2 === 0);
 // function getGameEvenRoundData
 // return ['game round task' string or number, 'answer' string or number]
 const getGameEvenRoundData = () => {
-  const roundNumber = getRandomNumber(100);
-  const correctRoundAnswer = isEven(roundNumber) ? 'yes' : 'no';
+  const roundQuestion = getRandomNumber();
+  const correctAnswer = isEven(roundQuestion) ? 'yes' : 'no';
 
-  const dataSetRoundGame = [roundNumber, correctRoundAnswer];
+  const roundData = [roundQuestion, correctAnswer];
 
-  // console.log(dataSetRoundGame);
-  return dataSetRoundGame;
+  // console.log(roundData);
+  return roundData;
 };
 
 const startGame = () => runGame(gameTask, getGameEvenRoundData);

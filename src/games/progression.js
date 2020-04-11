@@ -8,30 +8,30 @@ const gameTask = 'What number is missing in the progression?';
 // function getGameProgressionRoundData
 // return ['game round task' string or number, 'answer' string or number]
 const getGameProgressionRoundData = () => {
-  const maxValueFirstNum = 20;
-  const firstNum = getRandomNumber(maxValueFirstNum);
-  const maxValueDifference = 10;
-  const difference = getRandomNumber(maxValueDifference);
-  const baseCntNumbersProgression = 6;
-  const maxCntAddNumbersProgression = 8;
-  const n = baseCntNumbersProgression + getRandomNumber(maxCntAddNumbersProgression); // ~ [7..14]
+  const rangeFirstNum = [0, 20];
+  const firstNum = getRandomNumber(...rangeFirstNum);
+  const rangeValueDifference = [1, 10];
+  const difference = getRandomNumber(...rangeValueDifference);
+  const rangeCntNumbers = [7, 14];
+  const cntNumbersProgression = getRandomNumber(...rangeCntNumbers);
 
-  const findInd = getRandomNumber(n) - 1;
-  // console.log('d='+ difference + ' n='+ n +' findInd='+ findInd );
-  const decision = firstNum + difference * findInd;
+  const missingIndex = getRandomNumber(0, cntNumbersProgression - 1);
+  // console.log('d='+ difference + ' cntNumbersProgression='+
+  // cntNumbersProgression +' missingInd='+ missingInd );
+  const decision = firstNum + difference * missingIndex;
 
   const progressionTask = [];
-  for (let i = 0; i < n; i += 1) {
-    progressionTask.push((i === findInd) ? '..' : firstNum + (difference * i));
+  for (let i = 0; i < cntNumbersProgression; i += 1) {
+    progressionTask.push((i === missingIndex) ? '..' : firstNum + (difference * i));
     // console.log(i + ' : ' + ' ^ ' + progressionTask);
   }
 
-  const roundTask = progressionTask.join(' ');
-  const correctRoundAnswer = decision;
+  const roundQuestion = progressionTask.join(' ');
+  const correctAnswer = String(decision);
 
-  const dataSetRoundGame = [roundTask, correctRoundAnswer];
-  // console.log(dataSetRoundGame);
-  return dataSetRoundGame;
+  const roundData = [roundQuestion, correctAnswer];
+  // console.log(roundData);
+  return roundData;
 };
 
 const startGame = () => runGame(gameTask, getGameProgressionRoundData);

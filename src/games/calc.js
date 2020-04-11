@@ -13,29 +13,29 @@ const calcOperations = [
   { name: 'multi', display: '*', func: getMulti },
 ];
 
-const maxValueNumberDefault = 100;
-const maxValueNumberForMultiOper = 9;
+
+const rangeNumberForMultiOper = [1, 10];
 
 // function getGameCalcRoundData
 // return ['game round task' string or number, 'answer' string or number]
 const getGameCalcRoundData = () => {
-  let numA = getRandomNumber(maxValueNumberDefault);
-  let numB = getRandomNumber(maxValueNumberDefault);
+  let numA = getRandomNumber();
+  let numB = getRandomNumber();
 
-  const curOperIndex = getRandomNumber(calcOperations.length) - 1;
+  const curOperIndex = getRandomNumber(1, calcOperations.length) - 1;
   const сurOper = calcOperations[curOperIndex];
   if (сurOper.name === 'multi') {
-    numA = getRandomNumber(maxValueNumberForMultiOper);
-    numB = getRandomNumber(maxValueNumberForMultiOper);
+    numA = getRandomNumber(...rangeNumberForMultiOper);
+    numB = getRandomNumber(...rangeNumberForMultiOper);
   }
 
-  const roundTask = `${numA} ${сurOper.display} ${numB}`;
-  const correctRoundAnswer = сurOper.func(numA, numB);
+  const roundQuestion = `${numA} ${сurOper.display} ${numB}`;
+  const correctAnswer = String(сurOper.func(numA, numB));
 
-  const dataSetRoundGame = [roundTask, correctRoundAnswer];
+  const roundData = [roundQuestion, correctAnswer];
 
-  // console.log(dataSetRoundGame);
-  return dataSetRoundGame;
+  // console.log(roundData);
+  return roundData;
 };
 
 const startGame = () => runGame(gameTask, getGameCalcRoundData);

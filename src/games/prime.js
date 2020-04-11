@@ -11,21 +11,16 @@ const isPrime = (x) => {
   return true;
 };
 
-const maxValueNumberDefault = 100;
+const rangeNumber = [1, 150];
 
 // function getGamePrimeRoundData
 // return ['game round task' string or number, 'answer' string or number]
 const getGamePrimeRoundData = () => {
-  const number = getRandomNumber(maxValueNumberDefault);
+  const roundQuestion = getRandomNumber(...rangeNumber);
+  const correctAnswer = isPrime(roundQuestion) ? 'yes' : 'no';
 
-  const answer = isPrime(number);
-
-  const roundTask = number;
-  const correctRoundAnswer = (answer) ? 'yes' : 'no';
-
-  const dataSetRoundGame = [roundTask, correctRoundAnswer];
-  // console.log(dataSetRoundGame);
-  return dataSetRoundGame;
+  const roundData = [roundQuestion, correctAnswer];
+  return roundData;
 };
 
 const startGame = () => runGame(gameTask, getGamePrimeRoundData);
