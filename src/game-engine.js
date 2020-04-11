@@ -1,31 +1,41 @@
 import readlineSync from 'readline-sync';
 
-// Run a round of the game
-// Return true - win or false - loss
-const runRound = (textRoundTask, correctAnswer) => {
-  console.log(`Question: ${textRoundTask}`);
-  const answerUser = readlineSync.question('Your answer:');
-  let result = false;
-  if (typeof correctAnswer === 'number') {
-    result = Number(answerUser) === correctAnswer;
-  } else {
-    result = answerUser === correctAnswer;
-  }
+/**
+ * @typedef  {string} TroundQuestion Question round game
+ * @typedef  {string} TcorrectAnswer The correct answer to the question of the round of the game
+ * @typedef  {[TroundQuestion,string]} TDataRound Round game Dataset
+ */
 
-  if (result) console.log('Correct!');
-  else console.log(`"${answerUser}" is wrogn answer ;(. Correct answer was "${correctAnswer}"`);
+/**
+ * Run a round of the game
+ * @param {TroundQuestion} roundQuestion Question round game
+ * @param {TcorrectAnswer} correctAnswer The correct answer to the question of the round of the game
+ * @returns {boolean} Returns `true` if user wins the round, else if he loses `false`
+*/
+const runRound = (roundQuestion, correctAnswer) => {
+  console.log(`Question: ${roundQuestion}`);
+
+  const answerUser = readlineSync.question('Your answer:');
+
+  const result = answerUser === String(correctAnswer);
+  if (result) {
+    console.log('Correct!');
+  } else {
+    console.log(`"${answerUser}" is wrogn answer ;(. Correct answer was "${correctAnswer}"`);
+  }
   return result;
 };
 
-const losing = (name) => `Let's try again, ${name}!`;
-
-const congratulations = (name) => `Congratulations, ${name}!`;
-
-const gameOver = (name, isWin) => (isWin ? congratulations(name) : losing(name));
-
 const numberOfRoundsOfGame = 3;
 
-// General logic of brain games
+/**
+ * Game engine
+ * @description General logic of brain games
+ * @param {string} gameTask Game task description
+ * @param {() => TDataRound} funcGetDataRound Logic one round game function
+ * return question and corresponding answer of the round ['round question', 'correct answer']
+ * @returns {boolean} Returns `true` if user wins the game, else `false`.
+ */
 const runGame = (gameTask, funcGetDataRound) => {
   // getting to know the player
   console.log('Welcome to the Brain Games!');
@@ -35,19 +45,21 @@ const runGame = (gameTask, funcGetDataRound) => {
   // start game
   console.log(gameTask);
   // Questions to the player
-  let trueAnswer = 0;
-  while (trueAnswer < numberOfRoundsOfGame) {
+  let userWin = false;
+  for (let trueAnswer = 0; trueAnswer < numberOfRoundsOfGame; trueAnswer += 1) {
+    // const [ roundTask, roundAnswer] = funcGetDataRound();
     if (runRound(...funcGetDataRound())) {
-      // win check, congratulations
-      trueAnswer += 1;
+      userWin = true;
     } else {
+      // if (!runRound(roundTask, roundAnswer)) {
       // wrong answer, losing
+      // userWin = false;
       break;
     }
   }
 
-  console.log(gameOver(nameUser, (trueAnswer === numberOfRoundsOfGame)));
-  return (trueAnswer === numberOfRoundsOfGame);
+  console.log((userWin ? `Congratulations, ${nameUser}!` : `Let's try again, ${nameUser}!`));
+  return userWin;
 };
 
 export default runGame;
