@@ -1,6 +1,6 @@
 # "Brain Games"
 
-[![Maintainability](https://api.codeclimate.com/v1/badges/a99a88d28ad37a79dbf6/maintainability)](https://codeclimate.com/github/codeclimate/codeclimate/maintainability) ![CI](https://github.com/tychkovas/frontend-project-lvl1/workflows/CI/badge.svg)
+[![Maintainability](https://api.codeclimate.com/v1/badges/4e7608bcbe2b21ac12ca/maintainability)](https://codeclimate.com/github/tychkovas/frontend-project-lvl1/maintainability) ![CI](https://github.com/tychkovas/frontend-project-lvl1/workflows/CI/badge.svg)
 
 ## Math mini-games that run from the console:
  - Parity Check
