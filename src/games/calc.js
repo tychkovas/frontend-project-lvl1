@@ -13,11 +13,12 @@ const calcOperations = [
   { name: 'multi', display: '*', func: getMulti },
 ];
 
-
 const rangeNumberForMultiOper = [1, 10];
 
-// function getGameCalcRoundData
-// return ['game round task' string or number, 'answer' string or number]
+/**
+ * Logic work round game calculator
+ * @returns {[string,string]} return ['round question', 'correct answer']
+ */
 const getGameCalcRoundData = () => {
   let numA = getRandomNumber();
   let numB = getRandomNumber();
@@ -31,10 +32,8 @@ const getGameCalcRoundData = () => {
 
   const roundQuestion = `${numA} ${сurOper.display} ${numB}`;
   const correctAnswer = String(сurOper.func(numA, numB));
-
   const roundData = [roundQuestion, correctAnswer];
 
-  // console.log(roundData);
   return roundData;
 };
 

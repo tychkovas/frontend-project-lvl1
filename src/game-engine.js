@@ -8,15 +8,13 @@ import readlineSync from 'readline-sync';
 
 /**
  * Run a round of the game
- * @param {TroundQuestion} roundQuestion Question round game
+ * @param {string} roundQuestion Question round game
  * @param {TcorrectAnswer} correctAnswer The correct answer to the question of the round of the game
  * @returns {boolean} Returns `true` if user wins the round, else if he loses `false`
 */
 const runRound = (roundQuestion, correctAnswer) => {
   console.log(`Question: ${roundQuestion}`);
-
   const answerUser = readlineSync.question('Your answer:');
-
   const result = answerUser === String(correctAnswer);
   if (result) {
     console.log('Correct!');
@@ -34,7 +32,7 @@ const numberOfRoundsOfGame = 3;
  * @param {string} gameTask Game task description
  * @param {() => TDataRound} funcGetDataRound Logic one round game function
  * return question and corresponding answer of the round ['round question', 'correct answer']
- * @returns {boolean} Returns `true` if user wins the game, else `false`.
+ * @returns {boolean} Returns `true` if user wins the game, else `false`
  */
 const runGame = (gameTask, funcGetDataRound) => {
   // getting to know the player
@@ -47,13 +45,10 @@ const runGame = (gameTask, funcGetDataRound) => {
   // Questions to the player
   let userWin = false;
   for (let trueAnswer = 0; trueAnswer < numberOfRoundsOfGame; trueAnswer += 1) {
-    // const [ roundTask, roundAnswer] = funcGetDataRound();
     if (runRound(...funcGetDataRound())) {
       userWin = true;
     } else {
-      // if (!runRound(roundTask, roundAnswer)) {
       // wrong answer, losing
-      // userWin = false;
       break;
     }
   }

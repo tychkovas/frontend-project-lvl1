@@ -13,13 +13,15 @@ const isPrime = (x) => {
 
 const rangeNumber = [1, 150];
 
-// function getGamePrimeRoundData
-// return ['game round task' string or number, 'answer' string or number]
+/**
+ * Logic work round game prime
+ * @returns {[string,string]} return ['round question', 'correct answer']
+ */
 const getGamePrimeRoundData = () => {
   const roundQuestion = getRandomNumber(...rangeNumber);
   const correctAnswer = isPrime(roundQuestion) ? 'yes' : 'no';
-
   const roundData = [roundQuestion, correctAnswer];
+
   return roundData;
 };
 
