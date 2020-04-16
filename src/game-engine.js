@@ -15,7 +15,7 @@ import readlineSync from 'readline-sync';
 const runRound = (roundQuestion, correctAnswer) => {
   console.log(`Question: ${roundQuestion}`);
   const answerUser = readlineSync.question('Your answer:');
-  const result = answerUser === String(correctAnswer);
+  const result = answerUser === correctAnswer;
   if (result) {
     console.log('Correct!');
   } else {
@@ -30,11 +30,10 @@ const numberOfRoundsOfGame = 3;
  * Game engine
  * @description General logic of brain games
  * @param {string} gameTask Game task description
- * @param {() => TDataRound} funcGetDataRound Logic one round game function
+ * @param {() => TDataRound} getDataRound Logic one round game function
  * return question and corresponding answer of the round ['round question', 'correct answer']
- * @returns {boolean} Returns `true` if user wins the game, else `false`
  */
-const runGame = (gameTask, funcGetDataRound) => {
+const runGame = (gameTask, getDataRound) => {
   // getting to know the player
   console.log('Welcome to the Brain Games!');
   const nameUser = readlineSync.question('May I have your name? ');
@@ -43,18 +42,12 @@ const runGame = (gameTask, funcGetDataRound) => {
   // start game
   console.log(gameTask);
   // Questions to the player
-  let userWin = false;
   for (let trueAnswer = 0; trueAnswer < numberOfRoundsOfGame; trueAnswer += 1) {
-    if (runRound(...funcGetDataRound())) {
-      userWin = true;
-    } else {
-      // wrong answer, losing
-      break;
+    if (!runRound(...getDataRound())) {
+      return console.log(`Let's try again, ${nameUser}!`);
     }
   }
-
-  console.log((userWin ? `Congratulations, ${nameUser}!` : `Let's try again, ${nameUser}!`));
-  return userWin;
+  return console.log(`Congratulations, ${nameUser}!`);
 };
 
 export default runGame;

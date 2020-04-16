@@ -1,5 +1,5 @@
 import runGame from '../game-engine.js';
-import { getRandomNumber } from '../utils.js';
+import getRandomNumber from '../utils.js';
 
 const gameTask = 'Answer "yes" if the number is even, otherwise answer "no".';
 

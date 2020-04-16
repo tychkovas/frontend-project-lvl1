@@ -1,37 +1,28 @@
 import runGame from '../game-engine.js';
-import { getRandomNumber } from '../utils.js';
+import getRandomNumber from '../utils.js';
 
-const gameTask = 'What is the dataSet of the expression?';
+const gameTask = 'What is the result of the expression?';
 
-const getSumm = (a, b) => a + b;
-const getSub = (a, b) => a - b;
-const getMulti = (a, b) => a * b;
-
-const calcOperations = [
-  { name: 'summ', display: '+', func: getSumm },
-  { name: 'sub', display: '-', func: getSub },
-  { name: 'multi', display: '*', func: getMulti },
-];
-
-const rangeNumberForMultiOper = [1, 10];
+const calcOperations = {
+  '+': (a, b) => a + b,
+  '-': (a, b) => a - b,
+  '*': (a, b) => a * b,
+};
 
 /**
  * Logic work round game calculator
  * @returns {[string,string]} return ['round question', 'correct answer']
  */
 const getGameCalcRoundData = () => {
-  let numA = getRandomNumber();
-  let numB = getRandomNumber();
+  const numberA = getRandomNumber();
+  const numberB = getRandomNumber();
 
-  const curOperIndex = getRandomNumber(1, calcOperations.length) - 1;
-  const сurOper = calcOperations[curOperIndex];
-  if (сurOper.name === 'multi') {
-    numA = getRandomNumber(...rangeNumberForMultiOper);
-    numB = getRandomNumber(...rangeNumberForMultiOper);
-  }
+  const listOperations = Object.keys(calcOperations);
+  const operationIndex = getRandomNumber(0, listOperations.length - 1);
+  const operation = listOperations[operationIndex];
 
-  const roundQuestion = `${numA} ${сurOper.display} ${numB}`;
-  const correctAnswer = String(сurOper.func(numA, numB));
+  const roundQuestion = `${numberA} ${operation} ${numberB}`;
+  const correctAnswer = String(calcOperations[operation](numberA, numberB));
   const roundData = [roundQuestion, correctAnswer];
 
   return roundData;

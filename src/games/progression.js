@@ -1,6 +1,5 @@
 import runGame from '../game-engine.js';
-import { getRandomNumber } from '../utils.js';
-
+import getRandomNumber from '../utils.js';
 
 const gameTask = 'What number is missing in the progression?';
 
@@ -9,17 +8,10 @@ const gameTask = 'What number is missing in the progression?';
  * @returns {[string,string]} return ['round question', 'correct answer']
  */
 const getGameProgressionRoundData = () => {
-  const rangeFirstNum = [0, 20];
-  const firstNum = getRandomNumber(...rangeFirstNum);
-
-  const rangeValueDifference = [1, 10];
-  const difference = getRandomNumber(...rangeValueDifference);
-
-  const rangeCntNumbers = [7, 14];
-  const cntNumbersProgression = getRandomNumber(...rangeCntNumbers);
-
+  const firstNum = getRandomNumber(0, 20);
+  const difference = getRandomNumber(1, 10);
+  const cntNumbersProgression = getRandomNumber(7, 14);
   const missingIndex = getRandomNumber(0, cntNumbersProgression - 1);
-  const decision = firstNum + difference * missingIndex;
 
   const progressionTask = [];
   for (let i = 0; i < cntNumbersProgression; i += 1) {
@@ -27,7 +19,7 @@ const getGameProgressionRoundData = () => {
   }
 
   const roundQuestion = progressionTask.join(' ');
-  const correctAnswer = String(decision);
+  const correctAnswer = String(firstNum + difference * missingIndex);
   const roundData = [roundQuestion, correctAnswer];
 
   return roundData;

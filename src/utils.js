@@ -9,6 +9,3 @@ const getRandomNumber = (from = 1, to = 100) => (
 );
 
 export default getRandomNumber;
-export {
-  getRandomNumber,
-};
