@@ -3,26 +3,25 @@ import getRandomNumber from '../utils.js';
 
 const gameTask = 'What is the result of the expression?';
 
-const calcOperations = {
+const operations = {
   '+': (a, b) => a + b,
   '-': (a, b) => a - b,
   '*': (a, b) => a * b,
 };
+const operators = Object.keys(operations);
+const operatorsCount = operators.length;
 
 /**
  * Logic work round game calculator
- * @returns {[string,string]} return ['round question', 'correct answer']
+ * @returns {[string, string]} return ['round question', 'correct answer']
  */
 const getGameCalcRoundData = () => {
   const numberA = getRandomNumber();
   const numberB = getRandomNumber();
+  const operator = operators[getRandomNumber(0, operatorsCount - 1)];
 
-  const listOperations = Object.keys(calcOperations);
-  const operationIndex = getRandomNumber(0, listOperations.length - 1);
-  const operation = listOperations[operationIndex];
-
-  const roundQuestion = `${numberA} ${operation} ${numberB}`;
-  const correctAnswer = String(calcOperations[operation](numberA, numberB));
+  const roundQuestion = `${numberA} ${operator} ${numberB}`;
+  const correctAnswer = String(operations[operator](numberA, numberB));
   const roundData = [roundQuestion, correctAnswer];
 
   return roundData;

@@ -10,11 +10,11 @@ const gameTask = 'What number is missing in the progression?';
 const getGameProgressionRoundData = () => {
   const firstNum = getRandomNumber(0, 20);
   const difference = getRandomNumber(1, 10);
-  const cntNumbersProgression = getRandomNumber(7, 14);
-  const missingIndex = getRandomNumber(0, cntNumbersProgression - 1);
+  const size = getRandomNumber(7, 14);
+  const missingIndex = getRandomNumber(0, size - 1);
 
   const progressionTask = [];
-  for (let i = 0; i < cntNumbersProgression; i += 1) {
+  for (let i = 0; i < size; i += 1) {
     progressionTask.push((i === missingIndex) ? '..' : firstNum + (difference * i));
   }
 
